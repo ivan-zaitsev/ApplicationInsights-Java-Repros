@@ -23,14 +23,14 @@ public class Application {
 
     @GetMapping("/1")
     public void handle1() {
-        // should propagate exception to main thread
+        // should only throw exception internally
         // produces 'exception' attribute
         blobContainerClient.exists();
     }
 
     @GetMapping("/2")
     public void handle2() {
-        // should only throw exception internally
+        // should propagate exception to main thread
         // produces 'exception.type', 'exception.message', 'exception.stacktrace' attributes
         blobContainerClient.delete();
     }
